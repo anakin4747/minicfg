@@ -1,0 +1,28 @@
+#!/bin/bash
+
+for arg in "$@"; do
+    if [ -d "$arg" ]; then
+        echo "$0: error: '$arg' is a directory"
+        exit 1
+    fi
+done
+
+if pstree -s $$ | grep -q nvim; then
+    # inside neovim
+    if [ "$#" -ne "0" ]; then
+        realpath "$@" | xargs -n1 nvim --server "$NVIM" --remote
+    fi
+    exit
+fi
+
+# outside neovim
+if [ "$#" -eq "0" ]; then
+    nvim +terminal \
+        --listen "$NVIM" \
+        --startuptime /tmp/nvimstartup
+    exit
+fi
+
+nvim "$@" \
+    --listen "$NVIM" \
+    --startuptime /tmp/nvimstartup
