@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set_log_level() {
+    nvim \
+        --server "$NVIM" \
+        --remote-send "<C-\><C-n>:=vim.lsp.log.set_level(vim.log.levels.$1)<CR><CR>i" \
+        &> /dev/null
+}
+
+reset_log_level() {
+    set_log_level WARN
+}
+
+set_log_level DEBUG
+
+trap reset_log_level SIGINT SIGTERM
+
+tail -f ~/.local/state/nvim/lsp.log
