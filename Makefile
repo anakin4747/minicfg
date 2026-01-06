@@ -1,16 +1,33 @@
+DESTDIR ?=
+PREFIX ?= /usr/local
+
 NVIM = neovim/build/bin/nvim
+SCRIPTS := $(wildcard $(CURDIR)/scripts/*)
+SCRIPT_TARGETS := $(patsubst $(CURDIR)/scripts/%,\
+	$(DESTDIR)$(PREFIX)/bin/%,$(SCRIPTS))
 
-.PHONY: install
-install: $(NVIM)
-	-unlink ~/.config/nvim
-	ln -s $(CURDIR) ~/.config/nvim
-	sudo $(MAKE) -C neovim install
+.PHONY: install uninstall
 
-.PHONY: uninstall
+install: $(NVIM) $(SCRIPT_TARGETS)
+	rm -f ~/.config/nvim
+	ln -snf $(CURDIR) ~/.config/nvim
+	sudo $(MAKE) -C neovim install \
+		DESTDIR=$(DESTDIR) PREFIX=$(PREFIX)
+
 uninstall:
-	unlink ~/.config/nvim
-	sudo rm -rf /usr/local/bin/nvim /usr/local/share/nvim
+	rm -f ~/.config/nvim
+	sudo rm -rf \
+		/usr/local/bin/nvim \
+		/usr/local/share/nvim \
+		$(SCRIPT_TARGETS)
+
+$(DESTDIR)$(PREFIX)/bin/%: scripts/%
+	sudo install -d "$(DESTDIR)$(PREFIX)/bin"
+	sudo ln -snf "$(CURDIR)/scripts/$*" "$@"
 
 $(NVIM):
 	git submodule update --init --recursive --force
-	$(MAKE) -C neovim -j$(nproc)
+	$(MAKE) CMAKE_BUILD_TYPE=Release -C neovim -j$(shell nproc) \
+		DESTDIR=$(DESTDIR) PREFIX=$(PREFIX)
+
+
