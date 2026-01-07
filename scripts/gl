@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nvim --server $NVIM --remote-send "<C-\><C-N>:vert Git log<CR>"
