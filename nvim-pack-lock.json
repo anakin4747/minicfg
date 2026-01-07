@@ -1,0 +1,24 @@
+{
+  "plugins": {
+    "ai.nvim": {
+      "rev": "6a26da76f2f2aeba6fbcbe956bb91af1ebd67bea",
+      "src": "https://github.com/anakin4747/ai.nvim"
+    },
+    "codecompanion.nvim": {
+      "rev": "de6039c78cf1881293e709270e84ea41ab1aa666",
+      "src": "https://github.com/olimorris/codecompanion.nvim.git"
+    },
+    "gruvbox.nvim": {
+      "rev": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim.git"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim.git"
+    },
+    "vim-fugitive": {
+      "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
+      "src": "https://github.com/tpope/vim-fugitive.git"
+    }
+  }
+}
