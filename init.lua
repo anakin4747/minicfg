@@ -94,7 +94,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- lsps {{{ see :h lsp
 local server_commands = {
     bitbake = { 'language-server-bitbake', '--stdio' },
+    ansible = { 'ansible-language-server', '--stdio' },
     kconfig = { 'kconfig-language-server' },
+    dockerfile = { 'docker-language-server', 'start', '--stdio' },
     lua = { 'lua-language-server' },
     rust = { 'rust-analyzer' },
     cpp = { 'clangd' },
@@ -113,9 +115,14 @@ end
 
 -- plugins {{{ see :h vim.pack
 vim.pack.add({
-    'https://github.com/anakin4747/ai.nvim',
+    'https://github.com/nvim-lua/plenary.nvim.git',
+    'https://github.com/tpope/vim-fugitive.git',
     'https://github.com/ellisonleao/gruvbox.nvim.git',
+    'https://github.com/anakin4747/ai.nvim',
+    'https://github.com/olimorris/codecompanion.nvim.git',
 })
+
+require("codecompanion").setup()
 -- }}}
 
 -- colorscheme {{{
