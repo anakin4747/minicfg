@@ -34,6 +34,7 @@ PACMAN_PACKAGES = \
 	lua-language-server \
 	pyright \
 	rust-analyzer \
+	systemd-language-server \
 	tinymist \
 	typescript-language-server \
 	yaml-language-server
@@ -45,7 +46,6 @@ YAY_PACKAGES = \
 	nil-git
 
 NPM_PACKAGES = \
-	@ansible/ansible-language-server \
 	awk-language-server \
 	devicetree-language-server \
 	dot-language-server \

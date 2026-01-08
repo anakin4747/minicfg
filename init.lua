@@ -93,14 +93,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- lsps {{{ see :h lsp
 local server_commands = {
+    automake = { 'autotools-language-server' },
+    awk = { 'awk-language-server' },
+    bash = { 'bash-language-server', 'start' },
     bitbake = { 'language-server-bitbake', '--stdio' },
-    ansible = { 'ansible-language-server', '--stdio' },
-    kconfig = { 'kconfig-language-server' },
-    dockerfile = { 'docker-language-server', 'start', '--stdio' },
-    lua = { 'lua-language-server' },
-    rust = { 'rust-analyzer' },
-    cpp = { 'clangd' },
     c = { 'clangd' },
+    cmake = { 'cmake-language-server' },
+    cpp = { 'clangd' },
+    dockerfile = { 'docker-language-server', 'start', '--stdio' },
+    dot = { 'dot-language-server', '--stdio' },
+    dts = { 'devicetree-language-server', '--stdio' },
+    go = { 'gopls' },
+    javascript = { 'typescript-language-server', '--stdio' },
+    kconfig = { 'kconfig-language-server' },
+    lua = { 'lua-language-server' },
+    make = { 'autotools-language-server' },
+    nix = { 'nil' },
+    python = { 'pyright-langserver', '--stdio' },
+    rust = { 'rust-analyzer' },
+    systemd = { 'systemd-language-server' },
+    typescript = { 'typescript-language-server', '--stdio' },
+    typst = { 'tinymist' },
+    yaml = { 'yaml-language-server', '--stdio' },
 }
 
 for filetype, command in pairs(server_commands) do
