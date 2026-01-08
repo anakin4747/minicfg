@@ -45,6 +45,15 @@ local function man()
     vim.cmd('vert Man ' .. vim.fn.expand('<cword>'))
 end
 
+local function oldfiles()
+    local qflist = {}
+    for _, filename in ipairs(vim.v.oldfiles) do
+        table.insert(qflist, { filename = filename })
+    end
+    vim.fn.setqflist(qflist, 'r')
+    vim.cmd('copen')
+end
+
 -- diagnostics {{{ see :h diagnostic
 local function next_diagnostic(backwards)
     local count = backwards and -1 or 1
@@ -76,6 +85,8 @@ local keymaps = {
 
     { { 'n', 't', }, '<C-b>s', '<C-\\><C-n>:split +terminal<cr>i',      'Open a terminal below' },
     { { 'n', 't', }, '<C-b>v', '<C-\\><C-n>:vert split +terminal<cr>i', 'Open a terminal on the right' },
+
+    { 'n', '<leader>of', oldfiles, 'Open a quickfix list of :oldfiles' },
 }
 
 for _, keymap in pairs(keymaps) do
