@@ -87,7 +87,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.hl.on_yank() end
 })
 
-vim.api.nvim_create_autocmd('BufEnter', {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter' }, {
     desc = 'cd to terminal cwd on enter',
     pattern = 'term://*',
     callback = function()
