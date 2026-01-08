@@ -24,6 +24,7 @@ local options = {
     splitbelow = true,          -- Open new horizontal windows below
     splitright = true,          -- Open new vertical windows to the right
     background = "dark",
+    path = '**',                -- Make gf recursive
 
     -- Add english and french dictionary for spelling
     -- you will need to install these with your package manager
