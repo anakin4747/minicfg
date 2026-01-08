@@ -132,7 +132,9 @@ vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim.git',
     'https://github.com/tpope/vim-fugitive.git',
     'https://github.com/ellisonleao/gruvbox.nvim.git',
-    'https://github.com/anakin4747/ai.nvim',
+
+    'https://github.com/github/copilot.vim.git',
+    'https://github.com/anakin4747/ai.nvim.git',
     'https://github.com/olimorris/codecompanion.nvim.git',
 })
 
