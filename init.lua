@@ -23,7 +23,6 @@ local options = {
     termguicolors = true,       -- Enables 24-bit RGB color
     splitbelow = true,          -- Open new horizontal windows below
     splitright = true,          -- Open new vertical windows to the right
-    background = "dark",
     path = '**',                -- Make gf recursive
 
     -- Add english and french dictionary for spelling
