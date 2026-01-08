@@ -29,6 +29,8 @@ $(NVIM):
 
 PACMAN_PACKAGES = \
 	bash-language-server \
+		shellcheck \
+		shfmt \
 	clang \
 	gopls \
 	lua-language-server \
@@ -36,6 +38,7 @@ PACMAN_PACKAGES = \
 	rust-analyzer \
 	systemd-language-server \
 	tinymist \
+	tree-sitter-cli \
 	typescript-language-server \
 	yaml-language-server
 
