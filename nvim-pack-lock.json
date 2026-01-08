@@ -16,6 +16,10 @@
       "rev": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437",
       "src": "https://github.com/ellisonleao/gruvbox.nvim.git"
     },
+    "next_bufs.vim": {
+      "rev": "f0c4a18dfc2475cc96c44a0f6fa7bec0aa0495f4",
+      "src": "https://github.com/anakin4747/next_bufs.vim.git"
+    },
     "nvim-treesitter": {
       "rev": "de878155ca66c49b027b1380e4e60a6c665b2630",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"

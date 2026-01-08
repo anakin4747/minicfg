@@ -64,6 +64,18 @@ local keymaps = {
     { 'n', '[d', function() next_diagnostic(true) end, 'Go to previous error' },
     { 'n', ']d', function() next_diagnostic(false) end, 'Go to next error' },
     { 'n', '<leader>K', man, 'Open Man Page for word undercursor' },
+    { 'n', '<leader>K', man, 'Open Man Page for word undercursor' },
+
+    { { 'n', 'i', 'x', 'v', 't' }, '<C-h>', vim.fn['next_bufs#PrevTermBuf'],    'Previous terminal buffer' },
+    { { 'n', 'i', 'x', 'v', 't' }, '<C-l>', vim.fn['next_bufs#NextTermBuf'],    'Next terminal buffer' },
+    { { 'n', 'v' },                '<S-h>', vim.fn['next_bufs#PrevNonTermBuf'], 'Previous non-terminal buffer' },
+    { { 'n', 'v' },                '<S-l>', vim.fn['next_bufs#NextNonTermBuf'], 'Next non-terminal buffer' },
+
+    { 't', '<S-h><S-h><S-h>', vim.fn['next_bufs#PrevNonTermBuf'], 'Previous non-terminal buffer' },
+    { 't', '<S-l><S-l><S-l>', vim.fn['next_bufs#NextNonTermBuf'], 'Next non-terminal buffer' },
+
+    { { 'n', 't', }, '<C-b>s', '<C-\\><C-n>:split +terminal<cr>i',      'Open a terminal below' },
+    { { 'n', 't', }, '<C-b>v', '<C-\\><C-n>:vert split +terminal<cr>i', 'Open a terminal on the right' },
 }
 
 for _, keymap in pairs(keymaps) do
@@ -139,7 +151,9 @@ vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim.git',
 
     'https://github.com/tpope/vim-fugitive.git',
+
     'https://github.com/anakin4747/resize.vim.git',
+    'https://github.com/anakin4747/next_bufs.vim.git',
 
     'https://github.com/ellisonleao/gruvbox.nvim.git',
     'https://github.com/nvim-treesitter/nvim-treesitter.git',
