@@ -1,39 +1,33 @@
 
+vim.g.mapleader = ' '
+
 -- options {{{ see :help options or :h 'number'
 local options = {
-    number = true,              -- Show line number
-    relativenumber = true,      -- Show line numbers relative to current line
-    wrap = false,               -- Don't wrap long lines
-    textwidth = 79,             -- Go to new line after 80 characters
-    virtualedit = "all",        -- Ability to move anywhere
-    scrolloff = 9,              -- Keep a 9 space gap between cursor and window border
-    list = true,                -- Show all whitespace
-    shiftwidth = 4,             -- Specifies indent width
-    tabstop = 4,                -- Specifies how many spaces in a tab
-    smartindent = true,         -- Automatic indenting
-    expandtab = true,           -- Always expand tabs to spaces
-    hlsearch = false,           -- After searching remove highlight
-    incsearch = true,           -- Show incremental matches while searching
-    undofile = true,            -- Make undo history persist exiting vim
-    swapfile = false,           -- Don't use swapfiles
-    backup = false,             -- Don't save .bak backups
-    signcolumn = "number",      -- Place errors over number columns to avoid jitter
-    winborder = "rounded",      -- Set rounded floating window borders
-    clipboard = "unnamedplus",  -- Use system clipboard for EVERYTHING
-    termguicolors = true,       -- Enables 24-bit RGB color
-    splitbelow = true,          -- Open new horizontal windows below
-    splitright = true,          -- Open new vertical windows to the right
-    path = '**',                -- Make gf recursive
-
-    -- Add english and french dictionary for spelling
-    -- you will need to install these with your package manager
-    dictionary = "/usr/share/dict/american-english,/usr/share/dict/french",
-
-    -- Maybe only use once you know the folding keybindings
-    foldmethod = "indent",      -- Fold based on indents
-
-    -- Clean ui
-    -- only recommed this for more experienced users
+    number = true,
+    relativenumber = true,
+    wrap = false,
+    textwidth = 79,
+    virtualedit = 'all',
+    scrolloff = 9,
+    list = true,
+    shiftwidth = 4,
+    tabstop = 4,
+    smartindent = true,
+    expandtab = true,
+    hlsearch = false,
+    incsearch = true,
+    undofile = true,
+    swapfile = false,
+    backup = false,
+    signcolumn = 'number',
+    winborder = 'rounded',
+    clipboard = 'unnamedplus',
+    termguicolors = true,
+    splitbelow = true,
+    splitright = true,
+    path = '**',
+    dictionary = '/usr/share/dict/american-english,/usr/share/dict/french',
+    foldmethod = 'indent',
     cmdheight = 0,
     showcmd = false,
     ruler = false,
@@ -47,14 +41,11 @@ for option, value in pairs(options) do
 end
 -- }}}
 
+local function man()
+    vim.cmd('vert Man ' .. vim.fn.expand('<cword>'))
+end
+
 -- diagnostics {{{ see :h diagnostic
-
--- This will display diagnostics after each line
--- vim.diagnostic.config({ virtual_text = true })
--- or
--- This will display diagnostics in the line below
--- vim.diagnostic.config({ virtual_lines = true })
-
 local function next_diagnostic(backwards)
     local count = backwards and -1 or 1
     vim.diagnostic.jump({ count = count, float = true })
@@ -64,9 +55,15 @@ end
 -- keymaps {{{ see :h map or :h vim.keymap.set
 local keymaps = {
     { 'n', 'gd', '<C-]>', 'goto definition' },
+    { 'n', 'J', 'mzJ`z', 'Keeps cursor in place when using `J`' },
+    { 'n', '<C-d>', '<C-d>zz', 'Center after <C-d>' },
+    { 'n', '<C-u>', '<C-u>zz', 'Center after <C-u>' },
+    { 'n', 'n', 'nzzzv', 'Center after next match' },
+    { 'n', 'N', 'Nzzzv', 'Center after previous match' },
     { 't', '<esc><esc>', '<C-\\><C-n>', 'double escape to escape terminal mode' },
     { 'n', '[d', function() next_diagnostic(true) end, 'Go to previous error' },
     { 'n', ']d', function() next_diagnostic(false) end, 'Go to next error' },
+    { 'n', '<leader>K', man, 'Open Man Page for word undercursor' },
 }
 
 for _, keymap in pairs(keymaps) do
@@ -77,7 +74,7 @@ end
 
 -- autocmds {{{ see :h autocmd
 vim.api.nvim_create_autocmd('BufWritePre', {
-    desc = "clear trailing whitespace on write",
+    desc = 'clear trailing whitespace on write',
     callback = function()
         local view = vim.fn.winsaveview()
         vim.cmd([[%s/\s\+$//e]])
@@ -86,8 +83,18 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = "highlight selection on yank",
+    desc = 'highlight selection on yank',
     callback = function() vim.hl.on_yank() end
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    desc = 'cd to terminal cwd on enter',
+    pattern = 'term://*',
+    callback = function()
+        vim.fn.chdir(vim.fn.resolve(
+            '/proc/' .. vim.b.terminal_job_pid .. '/cwd'
+        ))
+    end
 })
 -- }}}
 
@@ -95,7 +102,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local server_commands = {
     automake = { 'autotools-language-server' },
     awk = { 'awk-language-server' },
-    bash = { 'bash-language-server', 'start' },
+    sh = { 'bash-language-server', 'start' },
     bitbake = { 'language-server-bitbake', '--stdio' },
     c = { 'clangd' },
     cmake = { 'cmake-language-server' },
@@ -130,15 +137,18 @@ end
 -- plugins {{{ see :h vim.pack
 vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim.git',
+
     'https://github.com/tpope/vim-fugitive.git',
+
     'https://github.com/ellisonleao/gruvbox.nvim.git',
+    'https://github.com/nvim-treesitter/nvim-treesitter.git',
 
     'https://github.com/github/copilot.vim.git',
     'https://github.com/anakin4747/ai.nvim.git',
     'https://github.com/olimorris/codecompanion.nvim.git',
 })
 
-require("codecompanion").setup()
+require('codecompanion').setup()
 -- }}}
 
 -- colorscheme {{{
@@ -146,6 +156,9 @@ vim.cmd([[
     colorscheme gruvbox
     highlight! link Folded LineNr
 ]])
+
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+
+require('nvim-treesitter').install('unstable')
 -- }}}
