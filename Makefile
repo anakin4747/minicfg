@@ -11,7 +11,7 @@ install: $(NVIM) $(SCRIPT_TARGETS) install-servers
 	ln -snf $(CURDIR) ~/.config/nvim
 	sudo $(MAKE) CMAKE_BUILD_TYPE=Release -C neovim install
 
-uninstall:
+uninstall: uninstall-servers
 	rm -f ~/.config/nvim
 	sudo rm -rf \
 		/usr/local/share/nvim \
