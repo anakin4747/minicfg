@@ -121,6 +121,12 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
         end
     end
 })
+
+vim.api.nvim_create_autocmd('BufLeave', {
+    desc = 'restore scrolloff when leaving a terminal buffer',
+    pattern = 'term://*',
+    callback = function() vim.o.scrolloff = options.scrolloff end,
+})
 -- }}}
 
 -- lsps {{{ see :h lsp
