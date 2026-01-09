@@ -1,5 +1,6 @@
 
 vim.g.mapleader = ' '
+vim.g.loaded_netrwPlugin = 1
 
 -- options {{{ see :help options or :h 'number'
 local options = {
