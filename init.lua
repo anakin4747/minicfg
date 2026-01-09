@@ -127,6 +127,11 @@ vim.api.nvim_create_autocmd('BufLeave', {
     pattern = 'term://*',
     callback = function() vim.o.scrolloff = options.scrolloff end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+    desc = 'try to start treesitter for supported filetypes',
+    callback = function() pcall(vim.treesitter.start) end,
+})
 -- }}}
 
 -- lsps {{{ see :h lsp
