@@ -27,47 +27,46 @@ $(NVIM):
 
 # Language Servers {{{
 
-PACMAN_PACKAGES = \
+NIX_PACKAGES = \
+	autotools-language-server \
+	awk-language-server \
 	bash-language-server \
-		shellcheck \
-		shfmt \
-	clang \
+	clang-tools \
+	cmake-language-server \
+	docker-language-server \
+	dot-language-server \
+	goose-cli \
 	gopls \
 	lua-language-server \
+	nil \
+	opencode \
 	pyright \
 	rust-analyzer \
+	shellcheck \
+	shfmt \
 	systemd-language-server \
 	tinymist \
-	tree-sitter-cli \
+	texlab \
+	tmux \
+	tree-sitter \
 	typescript-language-server \
+	xdg-utils \
 	yaml-language-server
 
-YAY_PACKAGES = \
-	autotools-language-server \
-	cmake-language-server \
-	docker-language-server-bin \
-	nil-git
-
 NPM_PACKAGES = \
-	awk-language-server \
 	devicetree-language-server \
-	dot-language-server \
 	language-server-bitbake
 
 .PHONY: install-servers
-install-servers: install-pacman-servers install-yay-servers install-npm-servers install-kconfig-language-server
+install-servers: install-nix-servers install-npm-servers install-kconfig-language-server
 
-.PHONY: install-pacman-servers
-install-pacman-servers:
-	sudo pacman -S --noconfirm --needed $(PACMAN_PACKAGES)
-
-.PHONY: install-yay-servers
-install-yay-servers:
-	yay -S --noconfirm --needed $(YAY_PACKAGES)
+.PHONY: install-nix-servers
+install-nix-servers:
+	nix profile add $(foreach pkg,$(NIX_PACKAGES),nixpkgs\#$(pkg))
 
 .PHONY: install-npm-servers
 install-npm-servers:
-	sudo npm install -g $(NPM_PACKAGES)
+	sudo npm isnt -g $(NPM_PACKAGES)
 
 .PHONY: install-kconfig-language-server
 install-kconfig-language-server:
@@ -80,10 +79,10 @@ install-kconfig-language-server:
 
 .PHONY: uninstall-servers
 uninstall-servers:
-	-sudo pacman -Rns --noconfirm $(PACMAN_PACKAGES)
-	-yay -Rns --noconfirm $(YAY_PACKAGES)
+	-nix profile remove $(NIX_PACKAGES)
 	-sudo npm uninstall -g $(NPM_PACKAGES)
 	-sudo $(MAKE) -C /opt/kconfig-language-server uninstall
 	-sudo rm -rf /opt/kconfig-language-server
 
 # }}}
+
