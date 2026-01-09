@@ -111,13 +111,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.hl.on_yank() end
 })
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter' }, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
     desc = 'cd to terminal cwd on enter',
     pattern = 'term://*',
     callback = function()
-        vim.fn.chdir(vim.fn.resolve(
-            '/proc/' .. vim.b.terminal_job_pid .. '/cwd'
-        ))
+        local cwd = vim.fn.resolve('/proc/' .. vim.b.terminal_job_pid .. '/cwd')
+        if vim.fn.isdirectory(cwd) == 1 then
+            vim.fn.chdir(cwd)
+        end
     end
 })
 -- }}}
