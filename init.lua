@@ -200,6 +200,7 @@ require('codecompanion').setup()
 vim.cmd([[
     colorscheme gruvbox
     highlight! link Folded LineNr
+    highlight markdownError NONE
 ]])
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
