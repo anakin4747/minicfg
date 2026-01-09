@@ -132,6 +132,11 @@ vim.api.nvim_create_autocmd('FileType', {
     desc = 'try to start treesitter for supported filetypes',
     callback = function() pcall(vim.treesitter.start) end,
 })
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    desc = 'unfold folds on buffer enter',
+    command = [[silent! normal zR]],
+})
 -- }}}
 
 -- lsps {{{ see :h lsp
