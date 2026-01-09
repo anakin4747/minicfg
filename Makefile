@@ -37,6 +37,7 @@ NIX_PACKAGES = \
 	dot-language-server \
 	goose-cli \
 	gopls \
+	lazygit \
 	lua-language-server \
 	nil \
 	opencode \

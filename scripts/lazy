@@ -1,0 +1,5 @@
+#!/bin/bash
+
+nvim --server $NVIM --remote-expr "chdir('$PWD')"
+nvim --server $NVIM --remote-expr "execute('tabnew +terminal\ lazygit')"
+
