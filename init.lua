@@ -160,6 +160,7 @@ local server_commands = {
     python = { 'pyright-langserver', '--stdio' },
     rust = { 'rust-analyzer' },
     systemd = { 'systemd-language-server' },
+    tex = { 'texlab' },
     typescript = { 'typescript-language-server', '--stdio' },
     typst = { 'tinymist' },
     yaml = { 'yaml-language-server', '--stdio' },
