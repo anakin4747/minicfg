@@ -101,14 +101,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     desc = 'clear trailing whitespace on write',
     callback = function()
         local view = vim.fn.winsaveview()
-        vim.cmd([[%s/\s\+$//e]])
+        vim.cmd([[ %s/\s\+$//e ]])
         vim.fn.winrestview(view)
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'highlight selection on yank',
-    callback = function() vim.hl.on_yank() end
+    callback = function() vim.hl.on_yank() end,
 })
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
         if vim.fn.isdirectory(cwd) == 1 then
             vim.fn.chdir(cwd)
         end
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd('BufLeave', {
@@ -136,12 +136,12 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
     desc = 'set suffixesadd for rst files',
     pattern = 'rst',
-    command = [[ set suffixesadd=.rst ]]
+    command = [[ set suffixesadd=.rst ]],
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {
     desc = 'unfold folds on buffer enter',
-    command = [[silent! normal zR]],
+    command = [[ silent! normal zR ]],
 })
 -- }}}
 

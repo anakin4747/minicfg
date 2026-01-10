@@ -46,8 +46,8 @@ NIX_PACKAGES = \
 	shellcheck \
 	shfmt \
 	systemd-language-server \
-	tinymist \
 	texlab \
+	tinymist \
 	tmux \
 	tree-sitter \
 	typescript-language-server \
