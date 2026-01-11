@@ -41,6 +41,7 @@ NIX_PACKAGES = \
 	lua-language-server \
 	nil \
 	opencode \
+	psmisc \
 	pyright \
 	rust-analyzer \
 	shellcheck \
