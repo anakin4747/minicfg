@@ -1,4 +1,4 @@
 #!/bin/bash
 
-nvim --server $NVIM --remote-expr "chdir('$PWD')"
-nvim --server $NVIM --remote-expr "execute('silent! vert Git diff $*')"
+nvim --server "$NVIM" --remote-expr "chdir('$PWD')"
+nvim --server "$NVIM" --remote-expr "execute('silent! vert Git diff $*')"

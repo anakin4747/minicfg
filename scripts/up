@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cd $(git rev-parse --show-toplevel)
+# shellcheck disable=SC2164
+cd "$(git rev-parse --show-toplevel)"

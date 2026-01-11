@@ -1,4 +1,4 @@
 #!/bin/bash
 
-nvim --server $NVIM --remote-expr "chdir('$PWD')"
-nvim --server $NVIM --remote-expr "execute('vert Git commit -v $*')"
+nvim --server "$NVIM" --remote-expr "chdir('$PWD')"
+nvim --server "$NVIM" --remote-expr "execute('vert Git commit -v $*')"
