@@ -87,6 +87,8 @@ local keymaps = {
     { { 'n', 't', }, '<C-b>v', '<C-\\><C-n>:vert split +terminal<cr>i', 'Open a terminal on the right' },
 
     { 'n', '<leader>of', oldfiles, 'Open a quickfix list of :oldfiles' },
+
+    { 't', '<C-w>', '<C-\\><C-n><C-w>', 'Escape <C-w> in terminal mode' },
 }
 
 for _, keymap in pairs(keymaps) do
