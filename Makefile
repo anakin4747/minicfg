@@ -56,6 +56,7 @@ NIX_PACKAGES = \
 	tmux \
 	tree-sitter \
 	typescript-language-server \
+	wl-clipboard \
 	xdg-utils \
 	yaml-language-server
 
