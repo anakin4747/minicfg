@@ -4,13 +4,17 @@ NVIM = neovim/build/bin/nvim
 
 SCRIPT_TARGETS := $(patsubst scripts/%, $(BIN_DIR)/%, $(wildcard scripts/*))
 
-.PHONY: install uninstall
+.PHONY: help # print this help
+help:
+	@./scripts/list-targets $(MAKEFILE_LIST)
 
+.PHONY: install # install nvim, config, scripts, deps
 install: $(NVIM) $(SCRIPT_TARGETS) install-deps
 	rm -f ~/.config/nvim
 	ln -snf $(CURDIR) ~/.config/nvim
 	sudo $(MAKE) CMAKE_BUILD_TYPE=Release -C neovim install
 
+.PHONY: uninstall # uninstall everything
 uninstall: uninstall-deps
 	rm -f ~/.config/nvim
 	sudo rm -rf \
@@ -59,7 +63,7 @@ NPM_PACKAGES = \
 	devicetree-language-server \
 	language-server-bitbake
 
-.PHONY: install-deps
+.PHONY: install-deps # install lsps, linters, cli tools
 install-deps:
 	nix profile add $(foreach pkg,$(NIX_PACKAGES),nixpkgs\#$(pkg))
 	sudo npm isnt -g $(NPM_PACKAGES)
@@ -71,7 +75,7 @@ install-deps:
 	fi
 	sudo $(MAKE) PREFIX=/usr -C /opt/kconfig-language-server install
 
-.PHONY: uninstall-deps
+.PHONY: uninstall-deps # uninstall lsps, linters, cli tools
 uninstall-deps:
 	-nix profile remove $(NIX_PACKAGES)
 	-sudo npm uninstall -g $(NPM_PACKAGES)

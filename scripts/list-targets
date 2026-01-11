@@ -1,0 +1,13 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+    FS=" # "
+    printf "\n  Makefile targets:\n"
+}
+
+/^.PHONY: .* # .*$/ {
+    gsub(/.PHONY: /, "", $0)
+    printf "    \033[36m%-17s\033[0m %s\n", $1, $2
+}
+
+END { printf "\n" }
