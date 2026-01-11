@@ -6,12 +6,12 @@ SCRIPT_TARGETS := $(patsubst scripts/%, $(BIN_DIR)/%, $(wildcard scripts/*))
 
 .PHONY: install uninstall
 
-install: $(NVIM) $(SCRIPT_TARGETS) install-servers
+install: $(NVIM) $(SCRIPT_TARGETS) install-deps
 	rm -f ~/.config/nvim
 	ln -snf $(CURDIR) ~/.config/nvim
 	sudo $(MAKE) CMAKE_BUILD_TYPE=Release -C neovim install
 
-uninstall: uninstall-servers
+uninstall: uninstall-deps
 	rm -f ~/.config/nvim
 	sudo rm -rf \
 		/usr/local/share/nvim \
@@ -59,19 +59,11 @@ NPM_PACKAGES = \
 	devicetree-language-server \
 	language-server-bitbake
 
-.PHONY: install-servers
-install-servers: install-nix-servers install-npm-servers install-kconfig-language-server
-
-.PHONY: install-nix-servers
-install-nix-servers:
+.PHONY: install-deps
+install-deps:
 	nix profile add $(foreach pkg,$(NIX_PACKAGES),nixpkgs\#$(pkg))
-
-.PHONY: install-npm-servers
-install-npm-servers:
 	sudo npm isnt -g $(NPM_PACKAGES)
 
-.PHONY: install-kconfig-language-server
-install-kconfig-language-server:
 	if [ ! -d /opt/kconfig-language-server ]; then \
 		sudo git clone --depth 1 \
 			https://github.com/anakin4747/kconfig-language-server \
@@ -79,8 +71,8 @@ install-kconfig-language-server:
 	fi
 	sudo $(MAKE) PREFIX=/usr -C /opt/kconfig-language-server install
 
-.PHONY: uninstall-servers
-uninstall-servers:
+.PHONY: uninstall-deps
+uninstall-deps:
 	-nix profile remove $(NIX_PACKAGES)
 	-sudo npm uninstall -g $(NPM_PACKAGES)
 	-sudo $(MAKE) -C /opt/kconfig-language-server uninstall
