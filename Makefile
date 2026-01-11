@@ -39,6 +39,7 @@ NIX_PACKAGES = \
 	cmake-language-server \
 	docker-language-server \
 	dot-language-server \
+	git \
 	goose-cli \
 	gopls \
 	lazygit \
