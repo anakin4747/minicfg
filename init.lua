@@ -140,6 +140,12 @@ vim.api.nvim_create_autocmd('FileType', {
     command = [[ set suffixesadd=.rst ]],
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    desc = 'set keywordprg for vim files',
+    pattern = 'vim',
+    command = [[ setlocal keywordprg=:vert\ help ]],
+})
+
 vim.api.nvim_create_autocmd('BufEnter', {
     desc = 'unfold folds on buffer enter',
     command = [[ silent! normal zR ]],
