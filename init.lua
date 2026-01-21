@@ -43,6 +43,26 @@ for option, value in pairs(options) do
 end
 -- }}}
 
+-- plugins {{{ see :h vim.pack
+vim.pack.add({
+    'https://github.com/nvim-lua/plenary.nvim.git',
+
+    'https://github.com/tpope/vim-fugitive.git',
+
+    'https://github.com/anakin4747/resize.vim.git',
+    'https://github.com/anakin4747/next_bufs.vim.git',
+
+    'https://github.com/ellisonleao/gruvbox.nvim.git',
+    'https://github.com/nvim-treesitter/nvim-treesitter.git',
+
+    'https://github.com/github/copilot.vim.git',
+    'https://github.com/anakin4747/ai.nvim.git',
+    'https://github.com/olimorris/codecompanion.nvim.git',
+})
+
+require('codecompanion').setup()
+-- }}}
+
 local function man()
     vim.cmd('vert Man ' .. vim.fn.expand('<cword>'))
 end
@@ -188,26 +208,6 @@ for filetype, command in pairs(server_commands) do
     })
     vim.lsp.enable(filetype)
 end
--- }}}
-
--- plugins {{{ see :h vim.pack
-vim.pack.add({
-    'https://github.com/nvim-lua/plenary.nvim.git',
-
-    'https://github.com/tpope/vim-fugitive.git',
-
-    'https://github.com/anakin4747/resize.vim.git',
-    'https://github.com/anakin4747/next_bufs.vim.git',
-
-    'https://github.com/ellisonleao/gruvbox.nvim.git',
-    'https://github.com/nvim-treesitter/nvim-treesitter.git',
-
-    'https://github.com/github/copilot.vim.git',
-    'https://github.com/anakin4747/ai.nvim.git',
-    'https://github.com/olimorris/codecompanion.nvim.git',
-})
-
-require('codecompanion').setup()
 -- }}}
 
 -- colorscheme {{{
