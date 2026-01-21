@@ -141,6 +141,12 @@ vim.api.nvim_create_autocmd('FileType', {
     command = [[ setlocal keywordprg=:vert\ help ]],
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    desc = 'set tab to 1 to enable folding by indent',
+    pattern = 'man',
+    command = [[ setlocal sw=1 ts=1 ]],
+})
+
 vim.api.nvim_create_autocmd('BufEnter', {
     desc = 'unfold folds on buffer enter',
     command = [[ silent! normal zR ]],
