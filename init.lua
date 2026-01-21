@@ -135,12 +135,6 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    desc = 'set suffixesadd for rst files',
-    pattern = 'rst',
-    command = [[ set suffixesadd=.rst ]],
-})
-
-vim.api.nvim_create_autocmd('FileType', {
     desc = 'set keywordprg for vim files',
     pattern = 'vim',
     command = [[ setlocal keywordprg=:vert\ help ]],
