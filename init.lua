@@ -101,7 +101,9 @@ local keymaps = {
     { { 'n', 't', }, '<C-b>s', '<C-\\><C-n>:split +terminal<cr>i',      'Open a terminal below' },
     { { 'n', 't', }, '<C-b>v', '<C-\\><C-n>:vert split +terminal<cr>i', 'Open a terminal on the right' },
 
-    { 'n', '<leader>of', ts.oldfiles, 'Telescope :oldfiles' },
+    { 'n', '<leader>of', ts.oldfiles,   'Telescope :oldfiles' },
+    { 'n', '<leader>ff', ts.find_files, 'Telescope !find' },
+    { 'n', '<leader>gf', ts.git_files,  'Telescope !git ls-files' },
 
     { 't', '<C-w>', '<C-\\><C-n><C-w>', 'Escape <C-w> in terminal mode' },
 }
