@@ -1,0 +1,12 @@
+set args --clean +terminal -u NONE
+set debuginfod enabled off
+set pagination off
+
+set follow-fork-mode child
+set detach-on-fork off
+# set scheduler-locking on
+
+# catch fork
+# catch exec
+
+break terminal_open
