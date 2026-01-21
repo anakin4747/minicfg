@@ -2,7 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.loaded_netrwPlugin = 1
 
--- options {{{ see :help options or :h 'number'
+-- options {{{
 local options = {
     backup = false,
     clipboard = 'unnamedplus',
@@ -43,7 +43,7 @@ for option, value in pairs(options) do
 end
 -- }}}
 
--- plugins {{{ see :h vim.pack
+-- plugins {{{
 vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim.git',
     'https://github.com/nvim-telescope/telescope.nvim',
@@ -68,14 +68,14 @@ local function man()
     vim.cmd('vert Man ' .. vim.fn.expand('<cword>'))
 end
 
--- diagnostics {{{ see :h diagnostic
+-- diagnostics {{{
 local function next_diagnostic(backwards)
     local count = backwards and -1 or 1
     vim.diagnostic.jump({ count = count, float = true })
 end
 -- }}}
 
--- keymaps {{{ see :h map or :h vim.keymap.set
+-- keymaps {{{
 local ts = require('telescope.builtin')
 
 local keymaps = {
@@ -112,7 +112,7 @@ for _, keymap in pairs(keymaps) do
 end
 -- }}}
 
--- autocmds {{{ see :h autocmd
+-- autocmds {{{
 vim.api.nvim_create_autocmd('BufWritePre', {
     desc = 'clear trailing whitespace on write',
     callback = function()
@@ -167,7 +167,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 -- }}}
 
--- lsps {{{ see :h lsp
+-- lsps {{{
 local server_commands = {
     automake = { 'autotools-language-server' },
     awk = { 'awk-language-server' },
