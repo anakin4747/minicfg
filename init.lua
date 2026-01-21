@@ -18,6 +18,7 @@ local options = {
     path = '**',
     relativenumber = true,
     ruler = false,
+    scrollback = 1000000,
     scrolloff = 9,
     shiftwidth = 4,
     showcmd = false,
