@@ -32,6 +32,10 @@
       "rev": "96b7ea2c88a389977d5c63a10b2dd4c6aa2de658",
       "src": "https://github.com/anakin4747/resize.vim.git"
     },
+    "telescope.nvim": {
+      "rev": "0d8b6eaa0b5ae6bb3d9785f7a3ba4a4c6c1b1af2",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
     "vim-fugitive": {
       "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
       "src": "https://github.com/tpope/vim-fugitive.git"

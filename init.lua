@@ -46,6 +46,7 @@ end
 -- plugins {{{ see :h vim.pack
 vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim.git',
+    'https://github.com/nvim-telescope/telescope.nvim',
 
     'https://github.com/tpope/vim-fugitive.git',
 
