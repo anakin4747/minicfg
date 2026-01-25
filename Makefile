@@ -29,7 +29,7 @@ $(NVIM):
 	git submodule update --init --recursive --force
 	$(MAKE) CMAKE_BUILD_TYPE=Release -C neovim -j$(shell nproc)
 
-# Language Servers {{{
+# Dependencies {{{
 
 NIX_PACKAGES = \
 	autotools-language-server \
