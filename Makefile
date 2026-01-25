@@ -63,10 +63,13 @@ NIX_PACKAGES = \
 
 NPM_PACKAGES = language-server-bitbake
 
+PACMAN_PACKAGES = words
+
 .PHONY: install-deps # install lsps, linters, cli tools
 install-deps:
 	nix profile add $(foreach pkg,$(NIX_PACKAGES),nixpkgs\#$(pkg))
 	sudo npm isnt -g $(NPM_PACKAGES)
+	sudo pacman -S --noconfirm $(PACMAN_PACKAGES)
 
 	if [ ! -d /opt/kconfig-language-server ]; then \
 		sudo git clone --depth 1 \
