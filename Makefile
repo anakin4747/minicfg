@@ -55,7 +55,6 @@ NIX_PACKAGES = \
 	systemd-language-server \
 	texlab \
 	tinymist \
-	tmux \
 	tree-sitter \
 	typescript-language-server \
 	wl-clipboard \
