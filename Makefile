@@ -39,6 +39,7 @@ NIX_PACKAGES = \
 	cmake-language-server \
 	docker-language-server \
 	dot-language-server \
+	ginko \
 	git \
 	goose-cli \
 	gopls \
@@ -61,9 +62,7 @@ NIX_PACKAGES = \
 	xdg-utils \
 	yaml-language-server
 
-NPM_PACKAGES = \
-	devicetree-language-server \
-	language-server-bitbake
+NPM_PACKAGES = language-server-bitbake
 
 .PHONY: install-deps # install lsps, linters, cli tools
 install-deps:
