@@ -25,7 +25,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
     },
     "oelint-adv.nvim": {
-      "rev": "0caee78a4a5f2ad2d479f0302a2fabc95a14fa2a",
+      "rev": "7a0b9ec13b61d25b54f5f9f24e64bb2423d47ac9",
       "src": "https://github.com/anakin4747/oelint-adv.nvim.git"
     },
     "plenary.nvim": {
