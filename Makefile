@@ -46,6 +46,7 @@ NIX_PACKAGES = \
 	lazygit \
 	lua-language-server \
 	nil \
+	oelint-adv \
 	opencode \
 	psmisc \
 	pyright \

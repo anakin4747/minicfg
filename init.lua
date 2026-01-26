@@ -52,6 +52,7 @@ vim.pack.add({
 
     'https://github.com/anakin4747/resize.vim.git',
     'https://github.com/anakin4747/next_bufs.vim.git',
+    'https://github.com/anakin4747/oelint-adv.nvim.git',
 
     'https://github.com/ellisonleao/gruvbox.nvim.git',
     'https://github.com/nvim-treesitter/nvim-treesitter.git',
