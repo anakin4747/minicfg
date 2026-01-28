@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "ZZ.term.vim": {
+      "rev": "d26c1ef388db87e548b8e6341d48e756a5563792",
+      "src": "https://github.com/anakin4747/ZZ.term.vim.git"
+    },
     "ai.nvim": {
       "rev": "6a26da76f2f2aeba6fbcbe956bb91af1ebd67bea",
       "src": "https://github.com/anakin4747/ai.nvim"

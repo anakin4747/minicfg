@@ -53,6 +53,7 @@ vim.pack.add({
     'https://github.com/anakin4747/resize.vim.git',
     'https://github.com/anakin4747/next_bufs.vim.git',
     'https://github.com/anakin4747/oelint-adv.nvim.git',
+    'https://github.com/anakin4747/ZZ.term.vim.git',
 
     'https://github.com/ellisonleao/gruvbox.nvim.git',
     'https://github.com/nvim-treesitter/nvim-treesitter.git',
@@ -107,6 +108,8 @@ local keymaps = {
     { 'n', '<leader>gf', ts.git_files,  'Telescope !git ls-files' },
 
     { 't', '<C-w>', '<C-\\><C-n><C-w>', 'Escape <C-w> in terminal mode' },
+
+    { 'n', 'ZZ', vim.fn['ZZ#ZZ'], 'ZZ.term.vim ZZ function' },
 }
 
 for _, keymap in pairs(keymaps) do
