@@ -5,7 +5,7 @@
       "src": "https://github.com/anakin4747/ZZ.term.vim.git"
     },
     "ai.nvim": {
-      "rev": "6a26da76f2f2aeba6fbcbe956bb91af1ebd67bea",
+      "rev": "a50d4b1c3e0855efce6faea6230bcab50598795f",
       "src": "https://github.com/anakin4747/ai.nvim"
     },
     "codecompanion.nvim": {
