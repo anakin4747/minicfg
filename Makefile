@@ -31,44 +31,13 @@ $(NVIM):
 
 # Dependencies {{{
 
-NIX_PACKAGES = \
-	autotools-language-server \
-	awk-language-server \
-	bash-language-server \
-	clang-tools \
-	cmake-language-server \
-	docker-language-server \
-	dot-language-server \
-	ginko \
-	git \
-	goose-cli \
-	gopls \
-	lazygit \
-	lua-language-server \
-	nil \
-	oelint-adv \
-	opencode \
-	psmisc \
-	pyright \
-	rust-analyzer \
-	shellcheck \
-	shfmt \
-	systemd-language-server \
-	texlab \
-	tinymist \
-	tree-sitter \
-	typescript-language-server \
-	wl-clipboard \
-	xdg-utils \
-	yaml-language-server
-
 NPM_PACKAGES = language-server-bitbake
 
 PACMAN_PACKAGES = words
 
 .PHONY: install-deps # install lsps, linters, cli tools
 install-deps:
-	nix profile add $(foreach pkg,$(NIX_PACKAGES),nixpkgs\#$(pkg))
+	nix profile add .\#default
 	sudo npm isnt -g $(NPM_PACKAGES)
 	sudo pacman -S --noconfirm $(PACMAN_PACKAGES)
 
@@ -81,7 +50,7 @@ install-deps:
 
 .PHONY: uninstall-deps # uninstall lsps, linters, cli tools
 uninstall-deps:
-	-nix profile remove $(NIX_PACKAGES)
+	-nix profile remove .\#default
 	-sudo npm uninstall -g $(NPM_PACKAGES)
 	-sudo $(MAKE) -C /opt/kconfig-language-server uninstall
 	-sudo rm -rf /opt/kconfig-language-server
