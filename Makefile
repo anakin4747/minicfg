@@ -1,6 +1,5 @@
 
 BIN_DIR = /usr/local/bin
-NVIM = neovim/build/bin/nvim
 
 SCRIPT_TARGETS := $(patsubst scripts/%, $(BIN_DIR)/%, $(wildcard scripts/*))
 
@@ -9,10 +8,9 @@ help:
 	@./scripts/list-targets $(MAKEFILE_LIST)
 
 .PHONY: install # install nvim, config, scripts, deps
-install: $(NVIM) $(SCRIPT_TARGETS) install-deps
+install: $(SCRIPT_TARGETS) install-deps
 	rm -f ~/.config/nvim
 	ln -snf $(CURDIR) ~/.config/nvim
-	sudo $(MAKE) CMAKE_BUILD_TYPE=Release -C neovim install
 
 .PHONY: uninstall # uninstall everything
 uninstall: uninstall-deps
@@ -24,10 +22,6 @@ uninstall: uninstall-deps
 
 $(BIN_DIR)/%: $(CURDIR)/scripts/%
 	sudo ln -snf "$<" "$@"
-
-$(NVIM):
-	git submodule update --init --recursive --force
-	$(MAKE) CMAKE_BUILD_TYPE=Release -C neovim -j$(shell nproc)
 
 # Dependencies {{{
 
