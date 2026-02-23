@@ -14,10 +14,19 @@
         inherit system;
         overlays = [ neovim-nightly-overlay.overlays.default ];
       };
+      scripts = pkgs.stdenv.mkDerivation {
+        name = "scripts";
+        src = ./scripts;
+        installPhase = ''
+          mkdir -p $out/bin
+          find . -maxdepth 1 -type f -executable -exec ln -s $src/{} $out/bin/{} \;
+        '';
+      };
     in {
       packages.${system}.default = pkgs.buildEnv {
         name = "nvim-env";
         paths = with pkgs; [
+          scripts
           neovim
           autotools-language-server
           awk-language-server

@@ -1,14 +1,12 @@
 
 BIN_DIR = /usr/local/bin
 
-SCRIPT_TARGETS := $(patsubst scripts/%, $(BIN_DIR)/%, $(wildcard scripts/*))
-
 .PHONY: help # print this help
 help:
 	@./scripts/list-targets $(MAKEFILE_LIST)
 
 .PHONY: install # install nvim, config, scripts, deps
-install: $(SCRIPT_TARGETS) install-deps
+install: install-deps
 	rm -f ~/.config/nvim
 	ln -snf $(CURDIR) ~/.config/nvim
 
@@ -17,11 +15,7 @@ uninstall: uninstall-deps
 	rm -f ~/.config/nvim
 	sudo rm -rf \
 		/usr/local/share/nvim \
-		$(BIN_DIR)/nvim \
-		$(SCRIPT_TARGETS)
-
-$(BIN_DIR)/%: $(CURDIR)/scripts/%
-	sudo ln -snf "$<" "$@"
+		$(BIN_DIR)/nvim
 
 # Dependencies {{{
 
