@@ -29,19 +29,10 @@ install-deps:
 	sudo npm isnt -g $(NPM_PACKAGES)
 	sudo pacman -S --noconfirm $(PACMAN_PACKAGES)
 
-	if [ ! -d /opt/kconfig-language-server ]; then \
-		sudo git clone --depth 1 \
-			https://github.com/anakin4747/kconfig-language-server \
-			/opt/kconfig-language-server; \
-	fi
-	sudo $(MAKE) PREFIX=/usr -C /opt/kconfig-language-server install
-
 .PHONY: uninstall-deps # uninstall lsps, linters, cli tools
 uninstall-deps:
 	-nix profile remove .\#default
 	-sudo npm uninstall -g $(NPM_PACKAGES)
-	-sudo $(MAKE) -C /opt/kconfig-language-server uninstall
-	-sudo rm -rf /opt/kconfig-language-server
 
 # }}}
 

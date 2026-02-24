@@ -3,11 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
-    # Add the neovim overlay input
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    kconfig-language-server = {
+        url = "github:anakin4747/kconfig-language-server";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, neovim-nightly-overlay }:
+  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -39,6 +42,7 @@
           git
           goose-cli
           gopls
+          kconfig-language-server.packages.${system}.default
           lazygit
           lua-language-server
           nil
