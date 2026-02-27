@@ -39,15 +39,12 @@
           docker-language-server
           dot-language-server
           ginko
-          git
-          goose-cli
           gopls
           kconfig-language-server.packages.${system}.default
           lazygit
           lua-language-server
           nil
           oelint-adv
-          opencode
           psmisc
           pyright
           rust-analyzer
