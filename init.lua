@@ -48,6 +48,7 @@ end
 vim.pack.add({
     'https://github.com/nvim-lua/plenary.nvim.git',
     'https://github.com/nvim-telescope/telescope.nvim',
+    'https://github.com/mbbill/undotree.git',
 
     'https://github.com/tpope/vim-fugitive.git',
 
@@ -103,6 +104,8 @@ local keymaps = {
 
     { { 'n', 't', }, '<C-b>s', '<C-\\><C-n>:split +terminal<cr>i',      'Open a terminal below' },
     { { 'n', 't', }, '<C-b>v', '<C-\\><C-n>:vert split +terminal<cr>i', 'Open a terminal on the right' },
+
+    { 'n', '<leader>ut', vim.fn['undotree#UndotreeToggle'], 'Undotree toggle' },
 
     { 'n', '<leader>of', ts.oldfiles,   'Telescope :oldfiles' },
     { 'n', '<leader>ff', ts.find_files, 'Telescope !find' },
