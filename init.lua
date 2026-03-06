@@ -50,6 +50,8 @@ vim.pack.add({
     'https://github.com/nvim-telescope/telescope.nvim',
     'https://github.com/mbbill/undotree.git',
 
+    'https://github.com/anakin4747/frenchcards.nvim.git',
+
     'https://github.com/tpope/vim-fugitive.git',
 
     'https://github.com/anakin4747/resize.vim.git',
