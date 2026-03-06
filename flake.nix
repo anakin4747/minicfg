@@ -31,6 +31,7 @@
         paths = with pkgs; [
           scripts
           neovim
+          vimPlugins.nvim-treesitter.withAllGrammars
           autotools-language-server
           awk-language-server
           bash-language-server
