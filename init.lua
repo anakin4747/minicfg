@@ -20,6 +20,7 @@ local options = {
     ruler = false,
     scrollback = 1000000,
     scrolloff = 9,
+    shell = 'zsh',
     shiftwidth = 4,
     showcmd = false,
     showmode = false,
