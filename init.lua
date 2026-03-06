@@ -110,6 +110,10 @@ local keymaps = {
     { 'n', '<leader>of', ts.oldfiles,   'Telescope :oldfiles' },
     { 'n', '<leader>ff', ts.find_files, 'Telescope !find' },
     { 'n', '<leader>gf', ts.git_files,  'Telescope !git ls-files' },
+    { 'n', '<leader>ic', ts.lsp_incoming_calls, 'Telescope LSP incoming calls' },
+    { 'n', '<leader>oc', ts.lsp_outgoing_calls, 'Telescope LSP outgoing calls' },
+    { 'n', '<leader>grr', ts.lsp_references, 'Telescope LSP symbol references' },
+    { 'n', '<leader>gO', ts.lsp_document_symbols, 'Telescope LSP document symbols' },
 
     { 't', '<C-w>', '<C-\\><C-n><C-w>', 'Escape <C-w> in terminal mode' },
 
