@@ -44,6 +44,7 @@
           lazygit
           lua-language-server
           nil
+          nodejs_24
           oelint-adv
           psmisc
           pyright
