@@ -39,6 +39,7 @@
           cmake-language-server
           docker-language-server
           dot-language-server
+          gcc
           ginko
           gopls
           kconfig-language-server.packages.${system}.default
