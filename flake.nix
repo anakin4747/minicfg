@@ -44,6 +44,7 @@
           gopls
           kconfig-language-server.packages.${system}.default
           lazygit
+          lsof
           lua-language-server
           nil
           nodejs_24
