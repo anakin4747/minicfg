@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ -f ./TODO.md ]; then
+    v TODO.md
+else
+    v ~/TODO.md
+fi
