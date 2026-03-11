@@ -23,7 +23,7 @@ if pstree -s $$ | grep -q nvim; then
     fi
 
     if [ "$#" -ne "0" ]; then
-        realpath "$@" | xargs -n1 nvim --server "$NVIM" --remote
+        realpath --zero "$@" | xargs -0 -n1 nvim --server "$NVIM" --remote
     fi
     exit
 fi
