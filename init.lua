@@ -207,6 +207,7 @@ local server_commands = {
     tex = { 'texlab' },
     typescript = { 'typescript-language-server', '--stdio' },
     typst = { 'tinymist' },
+    wks = { 'wksls' },
     yaml = { 'yaml-language-server', '--stdio' },
 }
 

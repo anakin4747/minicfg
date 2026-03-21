@@ -8,9 +8,13 @@
         url = "github:anakin4747/kconfig-language-server";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    wksls = {
+        url = "github:anakin4747/wksls";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server }:
+  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server, wksls }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -43,6 +47,7 @@
           ginko
           gopls
           kconfig-language-server.packages.${system}.default
+          wksls.packages.${system}.default
           lazygit
           lsof
           lua-language-server
