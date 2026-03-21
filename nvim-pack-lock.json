@@ -52,6 +52,10 @@
       "rev": "d8f99084d98c32f651860eb0baaf89759f91debc",
       "src": "https://github.com/mbbill/undotree.git"
     },
+    "wksls": {
+      "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
+      "src": "https://github.com/anakin4747/wksls.git"
+    },
     "vim-fugitive": {
       "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
       "src": "https://github.com/tpope/vim-fugitive.git"
