@@ -43,6 +43,7 @@
           cmake-language-server
           docker-language-server
           dot-language-server
+          fzf
           gcc
           ginko
           gopls
