@@ -157,11 +157,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774579491,
-        "narHash": "sha256-9Lc/32oAYoL4i7TJR7TqyOXZsaoSlNYBHYTZLCASjGw=",
+        "lastModified": 1776800972,
+        "narHash": "sha256-aNZ6vP5XoIFAIQPN6rUKbaazbfdILvLvWc/i2AF8oQg=",
         "owner": "anakin4747",
         "repo": "wksls",
-        "rev": "d454458fbfec2745eb131db01be429355e1f2252",
+        "rev": "fd6d1b30f133896f69c78a6808a76054fd75f88e",
         "type": "github"
       },
       "original": {
