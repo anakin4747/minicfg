@@ -10,7 +10,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
 
-      # Build the tree-sitter-bitbake grammar so the server can load its wasm
       tree-sitter-bitbake = pkgs.tree-sitter.buildGrammar {
         language = "bitbake";
         version = "0-unstable";
@@ -18,7 +17,7 @@
           owner = "idillon-sfl";
           repo = "tree-sitter-bitbake";
           rev = "bc577daab90b551ad1dc42c3373db2cb7c43857d";
-          hash = "sha256-zfU3SgsIybD8I/UOxFajyZoaUooK9sVFTplt/enfP7k=";
+          hash = "";
         };
       };
 
@@ -26,7 +25,7 @@
         owner = "yoctoproject";
         repo = "vscode-bitbake";
         rev = "a2fdba8e659778bdbc1f239ac9c6338e54401c60";
-        hash = "sha256-V6kkuSd+CuUkIBH8/7a57t4YmzCPMYDRmwrn934rnHI=";
+        hash = "";
       };
 
       language-server-bitbake = pkgs.buildNpmPackage {
@@ -35,7 +34,7 @@
 
         src = vscode-bitbake-src;
 
-        npmDepsHash = "sha256-j1awkWOh+xuGzNdBra+QI6anpCVmD/YRYe3fzXRFYtY=";
+        npmDepsHash = "";
 
         makeCacheWritable = true;
 
@@ -48,15 +47,12 @@
         installPhase = ''
           mkdir -p $out/bin $out/lib/language-server-bitbake
 
-          # Copy compiled server
           cp -r server/out $out/lib/language-server-bitbake/out
           cp -r server/node_modules $out/lib/language-server-bitbake/node_modules
 
-          # Provide wasm files from nix-built grammars
           cp ${tree-sitter-bitbake}/parser $out/lib/language-server-bitbake/tree-sitter-bitbake.wasm
           cp ${pkgs.tree-sitter-grammars.tree-sitter-bash}/parser $out/lib/language-server-bitbake/tree-sitter-bash.wasm
 
-          # Wrapper script
           cat > $out/bin/language-server-bitbake <<EOF
           #!${pkgs.nodejs}/bin/node
           require('$out/lib/language-server-bitbake/out/server.js');
