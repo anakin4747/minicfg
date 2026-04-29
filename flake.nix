@@ -12,9 +12,13 @@
         url = "github:anakin4747/wksls";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    language-server-bitbake = {
+        url = "path:./language-server-bitbake";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server, wksls }:
+  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server, wksls, language-server-bitbake }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -49,6 +53,7 @@
           gopls
           kconfig-language-server.packages.${system}.default
           wksls.packages.${system}.default
+          language-server-bitbake.packages.${system}.default
           lazygit
           lsof
           lua-language-server
