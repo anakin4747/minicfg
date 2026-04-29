@@ -59,6 +59,22 @@
         "type": "github"
       }
     },
+    "language-server-bitbake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./language-server-bitbake",
+        "type": "path"
+      },
+      "original": {
+        "path": "./language-server-bitbake",
+        "type": "path"
+      },
+      "parent": []
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -129,6 +145,7 @@
     "root": {
       "inputs": {
         "kconfig-language-server": "kconfig-language-server",
+        "language-server-bitbake": "language-server-bitbake",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "wksls": "wksls"
