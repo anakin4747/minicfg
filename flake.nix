@@ -16,9 +16,17 @@
         url = "path:./language-server-bitbake";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    dtls = {
+        url = "github:anakin4747r2d2/anakins-dtls";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+    c-ls = {
+        url = "github:anakin4747r2d2/anakins-c-ls";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server, wksls, language-server-bitbake }:
+  outputs = { self, nixpkgs, neovim-nightly-overlay, kconfig-language-server, wksls, language-server-bitbake, dtls, c-ls }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -49,11 +57,12 @@
           dot-language-server
           fzf
           gcc
-          ginko
           gopls
           kconfig-language-server.packages.${system}.default
           wksls.packages.${system}.default
           language-server-bitbake.packages.${system}.default
+          dtls.packages.${system}.default
+          c-ls.packages.${system}.default
           lazygit
           lsof
           lua-language-server
