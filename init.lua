@@ -2,6 +2,8 @@
 vim.g.mapleader = ' '
 vim.g.loaded_netrwPlugin = 1
 
+require('vim._core.ui2').enable({})
+
 -- options {{{
 local options = {
     backup = false,
